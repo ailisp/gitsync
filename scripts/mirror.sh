@@ -1,18 +1,20 @@
 #!/bin/bash
 
-DIR=git_workdir
-mkdir $DIR
-cd $DIR
 
-echo Cloning $GIT_SRC_ADDRESS
-git clone --mirror $GIT_SRC_ADDRESS
+if [ -d "$DIR" ]; then
+  cd $DIR
+	echo "Updating the local clone"
+	git remote update
+else
+	echo Cloning $GIT_SRC_ADDRESS to $DIR
+	git clone --mirror $GIT_SRC_ADDRESS $DIR
 
-cd parity.git
+	cd $DIR
+fi
 
 echo Pusing to $GIT_TRG_ADDRESS
+
 git push --mirror $GIT_TRG_ADDRESS
 
-cd ../../
-rm -rf $DIR
 
 
