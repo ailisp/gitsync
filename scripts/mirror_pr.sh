@@ -11,4 +11,4 @@ git fetch origin pull/$PR_ID/head:$PR_BRANCH
 git checkout $PR_BRANCH
 
 echo "push to gitlab"
-git push $GIT_TRG_ADDRESS $PR_BRANCH
+git push $GIT_TRG_ADDRESS $PR_BRANCH -f 
